@@ -30,6 +30,21 @@ async function getPostByTag(tag:string){
 	return posts
 }
 
+export async function generateMetadata({params}: Params) {
+	return {
+		title: `#${params.slug}`,
+		description: `Posts with the tag ${params.slug}`,
+		openGraph: {
+			title: `#${params.slug}`,
+			description: `Posts with the tag ${params.slug}`,
+			type: 'website',
+			locale: 'es_ES',
+			url: `https://blog-sanity-orcin.vercel.app/tag/${params.slug}`,
+			siteName: 'ER Turismo'
+		}
+	}
+}
+
 export default async function page({params}:Params) {
 	const posts: Array<Post> = await getPostByTag(params.slug)
 	return (

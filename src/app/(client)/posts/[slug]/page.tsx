@@ -8,6 +8,7 @@ import Link from 'next/link'
 import { PortableText } from 'next-sanity'
 import Image from 'next/image'
 import { urlForImage } from '../../../../../sanity/lib/image'
+import { Metadata } from 'next'
 
 interface Params {
 	params: {
@@ -37,6 +38,34 @@ async function getPost(slug:string) {
 
 export const revalidate = 60
 
+export async function generateMetadata({params}:Params):Promise<Metadata | undefined> {
+	const post: Post = await getPost(params?.slug)
+	if(!post) {
+		return
+	}
+	const imageUrl = post.body?.find(block => block._type === "image");
+	return {
+		title: post.title,
+		description: post.excerpt,
+		openGraph: {
+			title: post.title,
+			description: post.excerpt,
+			type: "article",
+			locale: "es_ES",
+			url: `https://blog-sanity-orcin.vercel.app/posts/${params.slug}`,
+			siteName: "Er Turismo",
+			images: imageUrl
+        ? [
+            {
+              url: urlForImage(imageUrl).width(1200).height(630).url(),
+							width: 1200,
+							height:630
+            },
+          ]
+        : [],
+		}
+	}
+}
 
 export default async function page({params} : Params ) {
 	console.log({params})

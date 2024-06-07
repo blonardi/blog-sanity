@@ -3,6 +3,7 @@ import { client } from '../../../../sanity/lib/client'
 import { Tag } from '@/app/utils/Interface'
 import { Header } from '@/app/components/Header'
 import Link from 'next/link'
+import { Metadata } from 'next'
 
 async function getAllTags() {
   const query = `
@@ -18,7 +19,10 @@ async function getAllTags() {
 }
 
 export const revalidate = 60
-
+export const metadata: Metadata = {
+	title: 'Tags',
+	description: 'Search for posts by tags'
+}
 export default async function page() {
   const tags: Tag[] = await getAllTags()
   return(
