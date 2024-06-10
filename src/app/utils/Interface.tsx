@@ -3,9 +3,14 @@ export interface Post{
 	slug: {current: string},
 	publishedAt: string,
 	excerpt: string,
-	body: any,
+	body: BodyBlock[],
 	tags: Array<Tag>,
 	_id: string
+}
+
+export interface BodyBlock {
+  _type: string;
+  [key: string]: any;
 }
 
 export interface Tag{
