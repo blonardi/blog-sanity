@@ -54,15 +54,15 @@ export async function generateMetadata({params}:Params):Promise<Metadata | undef
 			locale: "es_ES",
 			url: `https://blog-sanity-orcin.vercel.app/posts/${params.slug}`,
 			siteName: "Er Turismo",
-			images: imageUrl
-        ? [
-            {
-              url: urlForImage(imageUrl).width(1200).height(630).url(),
-							width: 1200,
-							height:630
-            },
-          ]
-        : [],
+			//images: imageUrl
+      //  ? [
+      //      {
+      //        url: urlForImage(imageUrl).width(1200).height(630).url(),
+			//				width: 1200,
+			//				height:630
+      //      },
+      //    ]
+      //  : [],
 		}
 	}
 }
