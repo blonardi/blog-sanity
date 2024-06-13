@@ -12,7 +12,7 @@ export function CMSNavbar() {
       <Link href='/'>
         <div className={`${font.className} text-3xl dark:text-amber-50`}>
           <span className='text-slate-600 dark:text-white'>er.</span>
-          <span className='text-purple-500'>Turismo</span>
+          <span className='text-lime-500'>Turismo</span>
         </div>
       </Link>
     </div>

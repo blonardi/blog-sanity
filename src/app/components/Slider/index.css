@@ -1,0 +1,9 @@
+.custom-swiper-button {
+  color: #84cc16; /* Tailwind lime-800 color */
+	opacity: 0.5;
+}
+
+.custom-swiper-button:hover {
+  opacity: 1;
+  transition: opacity 0.3s;
+}

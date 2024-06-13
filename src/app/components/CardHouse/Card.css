@@ -1,0 +1,66 @@
+.house-card {
+  display: flex;
+  flex-direction: column;
+  width: min-content;
+  padding: 16px;
+  overflow: hidden;
+  box-shadow: 0px 6px 16px rgba(27, 91, 100, 0.25);
+  background: white;
+}
+
+.house-image {
+  overflow: hidden;
+}
+
+.house-image-src {
+	height: auto;
+	width: 380px;
+	transition: .5s;
+}
+
+
+.house-image-src:hover {
+  transform: scale(1.1)
+}
+
+.house-info {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+  gap: 10px;
+
+  .house-price p {
+    color: var(--color-green-title);
+    font-size: var(--fsHeadline);
+    font-weight: 700;
+  }
+
+  .house-name h2 {
+    font-size: var(--fsHeadline);
+    color: var(--color-blue-title);
+  }
+
+  .house-name h2:hover {
+    color: var(--color-green-title);
+    transition: color 0.1s;
+  }
+    
+  .house-address {
+    display: flex;
+    margin-bottom: 1rem;
+
+    .house-address-direction {
+      font-size: 1rem;
+    }
+  }
+}
+
+.house-address img {
+  width: 12px;
+  margin-right: 8px;
+  fill: var(--color-green-title);
+  .house-address-text p {
+    font-size: var(--fsNormal);
+    color: var(--color-black-pearl-700);
+  }
+}
