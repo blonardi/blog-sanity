@@ -2,7 +2,7 @@ import { Header } from '@/app/components/Header'
 import React from 'react'
 import { client } from '../../../../../sanity/lib/client'
 import { Post } from '@/app/utils/Interface'
-import Link from 'next/link'
+import { Metadata } from 'next'
 import { PostComponent } from '@/app/components/PostComponent'
 
 interface Params {
@@ -13,7 +13,10 @@ interface Params {
 
 async function getPostByTag(tag:string){
 	const query = `
-	*[_type == "post" && references(*[_type == "tag" && slug.current == "${tag}"]._id)]{
+	*[
+      (_type == "post" || _type == "house") && 
+      references(*[_type == "tag" && slug.current == "${tag}"]._id)
+    ]{
     title,
     slug,
     publishedAt,
@@ -30,7 +33,9 @@ async function getPostByTag(tag:string){
 	return posts
 }
 
-export async function generateMetadata({params}: Params) {
+export async function generateMetadata({params}: Params):Promise<Metadata> {
+	const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
+	console.log({baseUrl})
 	return {
 		title: `#${params.slug}`,
 		description: `Posts with the tag ${params.slug}`,
@@ -39,7 +44,7 @@ export async function generateMetadata({params}: Params) {
 			description: `Posts with the tag ${params.slug}`,
 			type: 'website',
 			locale: 'es_ES',
-			url: `https://blog-sanity-orcin.vercel.app/tag/${params.slug}`,
+			url: `${baseUrl}/tag/${params.slug}`,
 			siteName: 'ER Turismo'
 		}
 	}

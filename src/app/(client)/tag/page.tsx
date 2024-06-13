@@ -11,7 +11,8 @@ async function getAllTags() {
 	_id,
 	name,
 	slug,
-	"postCount": count(*[_type == "post" && references("tags", ^._id)])
+	"postCount": count(*[_type == "post"  && references("tags", ^._id)]),
+	"contentCount": count(*[_type == "post" && references(^._id)]) + count(*[_type == "house" && references(^._id)]),
 }
 `
   const tags = client.fetch(query)
@@ -20,19 +21,19 @@ async function getAllTags() {
 
 export const revalidate = 60
 export const metadata: Metadata = {
-	title: 'Tags',
-	description: 'Search for posts by tags'
+	title: 'Categorias',
+	description: 'Buscar casas por tags'
 }
 export default async function page() {
   const tags: Tag[] = await getAllTags()
   return(
 		<div>
-			<Header title="Tags" />
+			<Header title="Articulos" />
 			<div>
 				{tags?.length > 0 && tags?.map(tag => (
 					<Link key={tag._id} href={`/tag/${tag.slug.current}`}>
-						<div className='mb-2 p-2 text-sm lowercase dark:bg-gray-950 border dark:border-gray-900 hover:text-purple-500'>
-							#{tag.name} ({tag?.postCount})
+						<div className='mb-2 p-2 text-sm lowercase dark:bg-gray-950 border dark:border-gray-900 hover:text-lime-500'>
+							#{tag.name} ({tag?.contentCount})
 						</div>
 					</Link>
 				))}

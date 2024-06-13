@@ -43,7 +43,8 @@ export async function generateMetadata({params}:Params):Promise<Metadata | undef
 	if(!post) {
 		return
 	}
-	const imageUrl = post.body?.find(block => block._type === "image");
+	const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
+	//const imageUrl = post.body?.find(block => block._type === "image");
 	return {
 		title: post.title,
 		description: post.excerpt,
@@ -52,17 +53,17 @@ export async function generateMetadata({params}:Params):Promise<Metadata | undef
 			description: post.excerpt,
 			type: "article",
 			locale: "es_ES",
-			url: `https://blog-sanity-orcin.vercel.app/posts/${params.slug}`,
+			url: `${baseUrl}/posts/${params.slug}`,
 			siteName: "Er Turismo",
-			images: imageUrl
-        ? [
-            {
-              url: urlForImage(imageUrl).width(1200).height(630).url(),
-							width: 1200,
-							height:630
-            },
-          ]
-        : [],
+			//images: imageUrl
+      //  ? [
+      //      {
+      //        url: urlForImage(imageUrl).width(1200).height(630).url(),
+			//				width: 1200,
+			//				height:630
+      //      },
+      //    ]
+      //  : [],
 		}
 	}
 }
@@ -70,7 +71,7 @@ export async function generateMetadata({params}:Params):Promise<Metadata | undef
 export default async function page({params} : Params ) {
 	console.log({params})
 	const post: Post = await getPost(params?.slug)
-
+	console.log({post})
 	if(!post){
 		notFound
 	}
@@ -79,7 +80,7 @@ export default async function page({params} : Params ) {
 		<div>
 			<Header title={post?.title}/>
 			<div className='text-center'>
-				<span className={`${dateFont?.className} text-purple-500`}>
+				<span className={`${dateFont?.className} text-lime-500`}>
 					{new Date(post?.publishedAt).toDateString()}
 				</span>
 				<div className='mt-5'>
