@@ -29,6 +29,11 @@ interface Image {
   alt?: string;
 }
 
+interface ImageReference {
+  _ref: string;
+  _type: 'reference';
+}
+
 // Definición del tipo para los bloques de contenido
 interface Block {
   _type: 'block' | 'image';
@@ -47,6 +52,31 @@ export interface Owner {
 	houseCount?: number,
 }
 
+interface SanityImage {
+  _ref: string;
+  _type: 'image';
+  asset: {
+    _ref: string;
+    _type: 'reference';
+  };
+}
+
+export interface ImageAsset {
+  _ref: string;
+  _type: 'reference';
+}
+export interface GalleryImage {
+  _type: string; // Tipo de la imagen (ej. 'image')
+  _key: string; // Clave única de la imagen
+  asset: {
+    _ref: string;
+		_type: string; // Referencia al asset de la imagen en Sanity
+    // Puedes añadir más propiedades si son necesarias, como 'type', 'metadata', etc.
+  };
+	alt?: string;
+  // Puedes incluir otras propiedades específicas de las imágenes en la galería según lo que necesites
+}
+
 export interface House {
 	_id: string;
 	_type: 'house';
@@ -57,8 +87,8 @@ export interface House {
   };
   description: string;
   excerpt: string;
-  coverImage: Image;
-  gallery: Image[];
+  coverImage: SanityImage;
+  gallery: GalleryImage[];
   publishedAt: string;
   body: any;
   capacity: number;
