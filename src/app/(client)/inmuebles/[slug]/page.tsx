@@ -2,8 +2,8 @@ import { Header } from '@/app/components/Header'
 import {notFound} from 'next/navigation'
 import React from 'react'
 import { client } from '../../../../../sanity/lib/client'
-import { House, Post } from '@/app/utils/Interface'
-import { Thasadith, VT323 } from 'next/font/google'
+import { House } from '@/app/utils/Interface'
+import { VT323 } from 'next/font/google'
 import Link from 'next/link'
 import { PortableText } from 'next-sanity'
 import Image from 'next/image'
@@ -78,7 +78,7 @@ export async function generateMetadata({params}:Params):Promise<Metadata | undef
 
 export default async function page({params} : Params ) {
 	const house: House = await getHouse(params?.slug)
-
+	console.log(house.gallery)
 	if(!house){
 		notFound
 	}
