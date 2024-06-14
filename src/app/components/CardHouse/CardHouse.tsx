@@ -21,7 +21,7 @@ export function CardHouse({ house }: CardProps) {
         <div className='max-w w-full'>
           <div className='bg-stone-200 flex flex-col shadow-xl rounded-lg overflow-hidden dark:bg-lime-50 dark:shadow-xl dark:shadow-bg-lime-50'>
             <div className='bg-cover bg-center mb-4'>
-              <Image className='w-full h-48 object-cover' src={urlForImage(house.coverImage)} alt={house.title} width={300} height={200} />
+              <Image className='w-full h-48 object-cover' src={urlForImage(house.coverImage.asset)} alt={house.title} width={300} height={200} />
             </div>
             <section className='flex gap-2 px-4'>
               {house?.tags?.map((tag) => (
