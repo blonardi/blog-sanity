@@ -13,10 +13,10 @@ export const metadata: Metadata = {
 		default: "ER Turismo - Hospedajes en Entre Rios",
 		template: '%s | ER Turismo - Hospedajes en Entre Rios'
 	},
-  description: 'Sitio de articulos y hospedajes en Entre Rios',
+  description: 'Explora artículos y hospedajes únicos en Entre Ríos con ER Turismo. Encuentra tu próxima aventura.',
   openGraph: {
     title: 'ER Turismo - Articulos y hospedajes en Entre Rios',
-    description: 'Sitio de articulos y hospedajes en Entre Rios',
+    description: 'Explora artículos y hospedajes únicos en Entre Ríos con ER Turismo. Encuentra tu próxima aventura.',
     type: 'website',
     locale: 'es_ES',
     url: `${baseUrl}`,
