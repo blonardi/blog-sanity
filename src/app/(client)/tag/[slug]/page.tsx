@@ -35,7 +35,6 @@ async function getPostByTag(tag:string){
 
 export async function generateMetadata({params}: Params):Promise<Metadata> {
 	const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
-	console.log({baseUrl})
 	return {
 		title: `#${params.slug}`,
 		description: `Posts with the tag ${params.slug}`,
