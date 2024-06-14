@@ -5,20 +5,21 @@ import { Navbar } from '@/app/components/Navbar'
 import { Provider } from '@/app/utils/Provider'
 
 const fira = Fira_Code({ subsets: ['latin'] })
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://blog-sanity-orcin.vercel.app/'),
+	metadataBase: new URL(`${baseUrl}`),
 	title: {
 		default: "ER Turismo - Hospedajes en Entre Rios",
 		template: '%s | ER Turismo - Hospedajes en Entre Rios'
 	},
-  description: 'Sitio de hospedajes en Entre Rios',
+  description: 'Sitio de articulos y hospedajes en Entre Rios',
   openGraph: {
     title: 'ER Turismo - Hospedajes en Entre Rios',
-    description: 'Sitio de hospedajes en Entre Rios',
+    description: 'Sitio de articulos y hospedajes en Entre Rios',
     type: 'website',
     locale: 'es_ES',
-    url: 'https://blog-sanity-orcin.vercel.app/',
+    url: `${baseUrl}`,
     siteName: 'ER Turismo'
   }
 }
