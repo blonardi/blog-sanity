@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 	},
   description: 'Sitio de articulos y hospedajes en Entre Rios',
   openGraph: {
-    title: 'ER Turismo - Hospedajes en Entre Rios',
+    title: 'ER Turismo - Articulos y hospedajes en Entre Rios',
     description: 'Sitio de articulos y hospedajes en Entre Rios',
     type: 'website',
     locale: 'es_ES',
